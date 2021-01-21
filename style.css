@@ -1,0 +1,86 @@
+body {
+  background: #ffe7be;
+  margin: 0;
+  padding: 0;
+}
+
+/* header-css */
+
+.navbar-top {
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-top-content {
+  /* background-color: black; */
+  margin-top: 75px;
+  height: 60px;
+  width: 75vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-text-icon {
+  color: black;
+}
+
+.btn-basket {
+  color: black;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* body-css */
+
+.body {
+  display: flex;
+  justify-content: center;
+}
+
+.body-element {
+  /* background-color: black; */
+  margin-top: 25px;
+  height: 400px;
+  width: 75vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-info {
+  color: black;
+}
+
+.btn-add {
+  padding: 10px 20px;
+}
+
+/* footer-css */
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-element {
+  /* background-color: black; */
+  margin-top: 25px;
+  height: 55px;
+  width: 75vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.footer-text {
+  color: black;
+}
