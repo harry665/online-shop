@@ -18,8 +18,11 @@
     "url": "https://github.com/harry665/library/issues"
   },
   "homepage": "https://github.com/harry665/library#readme",
-  "dependencies": {},
+  "dependencies": {
+    "mustache": "^4.1.0"
+  },
   "devDependencies": {
+    "@types/mustache": "^4.1.1",
     "browser-sync": "^2.26.13",
     "gulp": "^4.0.2",
     "gulp-run": "^1.7.1",

@@ -1,20 +1,30 @@
-import { Basket } from "./models/basket"
-import { Product } from "./models/prodcut"
+import { getViewHtmlString, renderTemplate, routing } from "./common";
 
-const basket = Basket.make()
+const route = routing()
+const page = getViewHtmlString(route)
 
-const product1 = new Product('1337', "hat", 5.00)
-const product2 = new Product('1338', "tshirt", 10.00)
+changePage(page)
 
-basket.addProduct(product1)
-basket.addProduct(product2)
+function changePage(page: string) {
+  renderTemplate(page)
+}
 
-console.log(basket.getProducts());
+// import { Basket } from "./models/basket"
+// import { Product } from "./models/prodcut"
 
+// const basket = Basket.make()
 
-//DropDown Amount
-// var selectAmount = document.getElementById("selectAmount");
-// var contents;
+// const product1 = new Product('1337', "hat", 5.00)
+// const product2 = new Product('1338', "tshirt", 10.00)
+
+// basket.addProduct(product1)
+// basket.addProduct(product2)
+
+// console.log(basket.getProducts());
+
+// DropDown Amount
+// const selectAmount = document.getElementById("selectAmount");
+// let contents;
 
 // for (let i = 0; i <= 10; i++) {
 //   contents += "<option>" + i + "</option>";

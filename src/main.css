@@ -40,12 +40,12 @@ body {
 
 /* body-css */
 
-.body {
+.content {
   display: flex;
   justify-content: center;
 }
 
-.body-element {
+.content-element {
   /* background-color: black; */
   margin-top: 25px;
   height: 400px;
