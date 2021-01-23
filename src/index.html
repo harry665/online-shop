@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link href="main.css" rel="stylesheet" type="text/css"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
     <script src="main.js" defer></script>
-    <Title>dotSource Aufgabenstellung: Warenkorb</Title> <!-- tab name -->
+    <Title>dotSource Aufgabenstellung: Shop</Title>
 </head>
 
 <body>
+
     <!-- header -->
     <header>
         
-        <div class="navbar-top">
-            <div class="navbar-top-content">
-                <div class="navbar-text-icon">
+        <div class="header">
+
+            <div class="header-element">
+
+                <div class="text-style">
                     <h2>Shop</h2>
                 </div>
-                <div class="navbar-text-icon">
-                    <button type="button" class="btn-basket" onclick="showBasket()"><i class="fas fa-shopping-basket fa-3x"></i></button>
+
+                <div class="text-style">
+                    <button type="button" class="btn-style" onclick="location.href='./basket.html';"><i class="fas fa-shopping-basket fa-3x"></i></button>
                 </div>
+
             </div>
+
         </div>
         
     </header>
@@ -33,25 +39,25 @@
                 
                 <div class="product-card">
                     <img src="img/product-1.jpg">
-                        <div class="product-info">Schwarzer Hut: 10,00€</div>
+                        <div class="text-style">Schwarzer Hut: 10,00€</div>
                         <button type="button" class="btn-add"><i class="fas fa-shopping-cart fa-2x"></i></button>
                 </div>
 
                 <div class="product-card">
                     <img src="img/product-2.jpg">
-                        <div class="product-info">Schwarzer T-Shirt: 15,00€</div>
+                        <div class="text-style">Schwarzes T-Shirt: 15,00€</div>
                         <button type="button" class="btn-add"><i class="fas fa-shopping-cart fa-2x"></i></button>
                 </div>
 
                 <div class="product-card">
                     <img src="img/product-3.jpg">
-                        <div class="product-info">Schwarze Hose: 25,00€</div>
+                        <div class="text-style">Schwarze Hose: 25,00€</div>
                         <button type="button" class="btn-add"><i class="fas fa-shopping-cart fa-2x"></i></button>
                 </div>
 
                 <div class="product-card">
                     <img src="img/product-4.jpg">
-                        <div class="product-info">Schwarze Schuhe: 50,00€</div>
+                        <div class="text-style">Schwarze Schuhe: 50,00€</div>
                         <button type="button" class="btn-add"><i class="fas fa-shopping-cart fa-2x"></i></button>
                 </div>
                 
@@ -68,15 +74,19 @@
         <div class="footer">
     
             <div class="footer-element">
-                <div class="footer-text">
+
+                <div class="text-style">
                     Week Sale!
                 </div>
-                <div class="footer-text">
-                    Einmaliger Rabatt in Höhe von 15%: XXXX-XXXX-XXXX-XXXX
+
+                <div class="text-style">
+                    Einmaliger Rabatt in Höhe von 15%: SALE21
                 </div>
-                <div class="footer-text">
-                    Einmaliger Gutschein in Höhe von 5,00€: XXXX-XXXX-XXXX-XXXX
+
+                <div class="text-style">
+                    Einmaliger Gutschein in Höhe von 5,00€: NEWYEAR21
                 </div>
+
             </div>
 
         </div>

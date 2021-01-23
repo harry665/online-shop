@@ -1,0 +1,188 @@
+/* GENERAL CSS */
+
+body {
+  background: #ffe7be;
+  margin: 0;
+  padding: 0;
+}
+
+.text-style {
+  color: black;
+}
+
+/* SHOP CSS */
+
+/* header-css */
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.header-element {
+  /* background-color: black; */
+  margin-top: 75px;
+  height: 60px;
+  width: 75vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-style {
+  color: black;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* body-css */
+
+.body {
+  display: flex;
+  justify-content: center;
+}
+
+.body-element {
+  /* background-color: black; */
+  margin-top: 25px;
+  height: 400px;
+  width: 75vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-add {
+  padding: 10px 20px;
+}
+
+/* footer-css */
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-element {
+  background-color: white;
+  margin-top: 25px;
+  height: 55px;
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* BASKET CSS */
+
+.basket-body-element {
+  background-color: black;
+  margin-top: 25px;
+  height: 400px;
+  width: 75vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.basket-body-item {
+  background-color: white;
+  height: 75px;
+  width: 75vw;
+  display: flex;
+  align-items: center;
+  border-bottom: 4px solid #172b53;
+}
+
+.basket-body-item-quantity {
+  background-color: red;
+  height: 50px;
+  width: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.basket-body-item-img {
+  background-color: yellow;
+  height: 50px;
+  width: 5%;
+  display: flex;
+  align-items: center;
+}
+
+.basket-body-item-info {
+  background-color: pink;
+  height: 50px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+}
+
+.basket-body-item-price {
+  background-color: green;
+  height: 50px;
+  width: 10%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  font-size: large;
+  font-weight: bold;
+}
+
+.basket-body-element-footer {
+  background-color: cornflowerblue;
+  height: 50px;
+  width: 75vw;
+  display: flex;
+  flex-direction: row;
+}
+
+.basket-body-element-coupon {
+  background-color: orange;
+  height: 50px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+}
+
+.basket-body-element-checkout {
+  background-color: indianred;
+  height: 50px;
+  width: 20%;
+  display: flex;
+  align-items: center;
+}
+
+.basket-body-element-amount {
+  background-color: white;
+  height: 50px;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.basket-body-element-total {
+  background-color: red;
+  height: 50px;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  font-size: large;
+  font-weight: bold;
+}
+
+.input {
+  margin-left: 5px;
+  width: 225px;
+}
