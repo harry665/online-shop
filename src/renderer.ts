@@ -56,22 +56,13 @@ export async function renderer() {
         navigateToBasketButtonElement.addEventListener("click", () => changePage('#basket'));
 
         if(page === 'home') {
-            const product1337Element = window.document.getElementById('add-product-1337')!
-            const product1338Element = window.document.getElementById('add-product-1338')!
-            const product1339Element = window.document.getElementById('add-product-1339')!
-            const product1340Element = window.document.getElementById('add-product-1340')!
+            const products = ProductList.make().getProducts()
 
-            // remove event listener
-            product1337Element.removeEventListener("click", () => addProductToBasked('1337'))
-            product1338Element.removeEventListener("click", () => addProductToBasked('1338'))
-            product1339Element.removeEventListener("click", () => addProductToBasked('1339'))
-            product1340Element.removeEventListener("click", () => addProductToBasked('1340'))
-
-            // add event listener
-            product1337Element.addEventListener("click", () => addProductToBasked('1337')); 
-            product1338Element.addEventListener("click", () => addProductToBasked('1338'));
-            product1339Element.addEventListener("click", () => addProductToBasked('1339'));
-            product1340Element.addEventListener("click", () => addProductToBasked('1340'));
+            for (const product of products) {
+                const product1337Element = window.document.getElementById(`add-product-${product.id}`)!
+                product1337Element.removeEventListener("click", () => addProductToBasked(product.id))
+                product1337Element.addEventListener("click", () => addProductToBasked(product.id)); 
+            }
         }
     }
 }
