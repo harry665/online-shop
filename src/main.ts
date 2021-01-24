@@ -1,4 +1,4 @@
-import { renderer } from "./renderer";
+import { render } from "./render";
 
 // fill basket
 // const basket = Basket.make()
@@ -7,4 +7,4 @@ import { renderer } from "./renderer";
 // basket.addProduct('1339')
 // basket.addProduct('1340')
 
-renderer()
+render()

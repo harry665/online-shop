@@ -28,9 +28,8 @@ export function renderTemplate(template: string, data: object = {}): string {
   return rendered
 }
 
-export async function getViewHtmlString(page: 'home' | 'basket'): Promise<string> {
+export async function getContentTemplate(page: 'home' | 'basket'): Promise<string> {
   const home = await fetch('views/home.mustache').then(response => response.text());
-
   const basket = await fetch('views/basket.mustache').then(response => response.text());
 
   const templates: { home: string, basket: string} = {
