@@ -1,73 +1,5 @@
 import { render } from "mustache";
 
-export function renderTemplate(content: string) {
-
-    const mainTemplateDomElement = document.getElementById('app-main')
-    const rendered = render(
-      mainTemplateDomElement!.innerHTML, 
-      { 
-        header: `
-          <header> 
-            <div class="header">
-              <div class="header-element">
-    
-                <div class="text-style" id="app-title">
-                  <h2>{{> title }}</h2>
-                </div>
-    
-                <div class="text-style">
-                  <button 
-                    id="navigate-to-home-button"
-                    type="button" 
-                    class="btn-style"
-                  >
-                      <i class="fas fa-home fa-3x"></i>
-                  </button>
-                  
-                  <button 
-                    id="navigate-to-basket-button"
-                    type="button" 
-                    class="btn-style"
-                  >
-                      <i class="fas fa-shopping-basket fa-3x"></i>
-                  </button>
-                </div>
-    
-              </div>
-            </div>
-          </header>
-        `,
-        footer: `
-          <footer>
-            <div class="footer">
-              <div class="footer-element">
-    
-                <div class="text-style">
-                  Week Sale!
-                </div>
-    
-                <div class="text-style">
-                  Einmaliger Rabatt in Höhe von 15%: SALE21
-                </div>
-    
-                <div class="text-style">
-                  Einmaliger Gutschein in Höhe von 5,00€: NEWYEAR21
-                </div>
-    
-              </div>
-            </div>
-          </footer>
-        `, 
-        content
-      }, {
-        title: 'Shop'
-      }
-    )
-    
-    mainTemplateDomElement!.innerHTML = rendered
-
-}
-
 export function routing(pageHash: string): 'basket' | 'home' {
   const page = pageHash.split('#')[1]
   window.location.hash = page
@@ -87,32 +19,49 @@ export function routing(pageHash: string): 'basket' | 'home' {
   }
 }
 
+export function renderTemplate(template: string, data: object = {}): string {
+  const rendered = render(
+    template, 
+    data
+  )
+
+  return rendered
+}
+
 export function getViewHtmlString(page: 'home' | 'basket'): string {
   const home = `
     <div class="content-element">
               
         <div class="product-card">
-            <img src="img/product-1.jpg">
-            <div class="text-style">Schwarzer Hut: 10,00€</div>
-            <button type="button" class="btn-add"><i class="fas fa-shopping-cart fa-2x"></i></button>
+          <img src="img/product-1.jpg">
+          <div class="text-style">Schwarzer Hut: 10,00€</div>
+          <button id="add-product-1337" type="button" class="btn-add">
+            <i class="fas fa-shopping-cart fa-2x"></i>
+          </button>
         </div>
 
         <div class="product-card">
-            <img src="img/product-2.jpg">
-            <div class="text-style">Schwarzes T-Shirt: 15,00€</div>
-            <button type="button" class="btn-add"><i class="fas fa-shopping-cart fa-2x"></i></button>
+          <img src="img/product-2.jpg">
+          <div class="text-style">Schwarzes T-Shirt: 15,00€</div>
+          <button id="add-product-1338" type="button" class="btn-add">
+            <i class="fas fa-shopping-cart fa-2x"></i>
+          </button>
         </div>
 
         <div class="product-card">
-            <img src="img/product-3.jpg">
-            <div class="text-style">Schwarze Hose: 25,00€</div>
-            <button type="button" class="btn-add"><i class="fas fa-shopping-cart fa-2x"></i></button>
+          <img src="img/product-3.jpg">
+          <div class="text-style">Schwarze Hose: 25,00€</div>
+          <button id="add-product-1339" type="button" class="btn-add">
+            <i class="fas fa-shopping-cart fa-2x"></i>
+          </button>
         </div>
 
         <div class="product-card">
-            <img src="img/product-4.jpg">
-            <div class="text-style">Schwarze Schuhe: 50,00€</div>
-            <button type="button" class="btn-add"><i class="fas fa-shopping-cart fa-2x"></i></button>
+          <img src="img/product-4.jpg">
+          <div class="text-style">Schwarze Schuhe: 50,00€</div>
+          <button id="add-product-1340" type="button" class="btn-add">
+            <i class="fas fa-shopping-cart fa-2x"></i>
+          </button>
         </div>
 
     </div>

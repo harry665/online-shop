@@ -1,9 +1,13 @@
-import { Product } from "./prodcut"
+
+type BasketItem = {
+    productId: string,
+    quantity: number
+}
 
 export class Basket {
     static INSTANCE: Basket | undefined
 
-    private products: Product[]
+    private basketItems: BasketItem[]
 
     static make() {
         if(this.INSTANCE) {
@@ -16,20 +20,40 @@ export class Basket {
     }
 
     constructor() {
-        this.products = []
+        this.basketItems = []
     }
 
-    addProduct(product: Product) {
-        this.products.push(product)
+    addProduct(productId: string): void {            
+        const foundProduct = this.basketItems.find(basketItem => basketItem.productId === productId)
+        if(!foundProduct) {
+            this.basketItems.push({
+                productId: productId,
+                quantity: 1
+            })
+
+            return
+        }
+
+        foundProduct.quantity++
     }
 
-    removeProduct(productId: string) {
-        const index = this.products.findIndex(product => product.id === productId)
+    removeProduct(productId: string): void {
+        const index = this.basketItems.findIndex(basketItem => basketItem.productId === productId)
 
-        this.products.splice(index, 1)
+        this.basketItems.splice(index, 1)
     }
 
-    getProducts() {
-        return this.products
+    getProducts(): BasketItem[] {
+        return this.basketItems
+    }
+
+    getBasketCount(): number {
+        let itemsInBasket: number = 0
+
+        this.basketItems.forEach(product => {
+            itemsInBasket += product.quantity
+        })
+
+        return itemsInBasket
     }
 }
