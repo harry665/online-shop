@@ -1,26 +1,10 @@
-import { ProductList } from "./product-list"
-
-type BasketRaw = {
-    productId: string,
-    quantity: number
-}
-
-type BasketItem = {
-    id: string,
-    name: string,
-    quantity: number,
-    totalPrice: number
-}
-
-type BasketData = {
-    items: BasketItem[],
-    totalPrice: number
-}
+import { ProductList } from "../product-list";
+import { IBasket, IBasketItem, IBasketRaw } from "./types";
 
 export class Basket {
     static INSTANCE: Basket | undefined
 
-    private basketItems: BasketRaw[]
+    private basketItems: IBasketRaw[]
 
     static make() {
         if(this.INSTANCE) {
@@ -56,7 +40,7 @@ export class Basket {
         this.basketItems.splice(index, 1)
     }
 
-    getItems(): BasketRaw[] {
+    getItems(): IBasketRaw[] {
         return this.basketItems
     }
 
@@ -70,8 +54,8 @@ export class Basket {
         return itemsInBasket
     }
 
-    getBasket(): BasketData {
-        const basketItems: BasketItem[] = []
+    getBasket(): IBasket {
+        const basketItems: IBasketItem[] = []
         
         const items = this.getItems()
         for (const item of items) {
@@ -93,7 +77,7 @@ export class Basket {
     }
 }
 
-function getTotalPrice(basketItems: BasketItem[]): number {
+function getTotalPrice(basketItems: IBasketItem[]): number {
     let totalPrice: number = 0
 
     basketItems.forEach((basketItem) => {

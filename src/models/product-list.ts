@@ -1,9 +1,11 @@
-import { Product } from "./prodcut"
+import { Product } from "./product/index"
+import { IProduct } from "./product/types"
+
 
 export class ProductList {
     static INSTANCE: ProductList | undefined
 
-    private products: Product[]
+    private products: IProduct[]
 
     static make() {
         if(this.INSTANCE) {
@@ -16,19 +18,41 @@ export class ProductList {
     }
 
     constructor() {
+        const product1 = new Product('1337', "Hat - Magic Black", 20.00)
+        const product2 = new Product('1338', "Shirt - Diamond Black", 10.00)
+        const product3 = new Product('1339', "Pants - Carbon Black", 30.00)
+        const product4 =  new Product('1340', "Shoes - Piano Black", 30.00)
+
+
         this.products = [
-            new Product('1337', "Hat - Magic Black", 20.00),
-            new Product('1338', "Shirt - Diamond Black", 10.00),
-            new Product('1339', "Pants - Carbon Black", 30.00),
-            new Product('1340', "Shoes - Piano Black", 30.00)
+            {
+                id: product1.id,
+                name: product1.name,
+                price: product1.price,
+            },
+            {
+                id: product2.id,
+                name: product2.name,
+                price: product2.price,
+            },
+            {
+                id: product3.id,
+                name: product3.name,
+                price: product3.price,
+            },
+            {
+                id: product4.id,
+                name: product4.name,
+                price: product4.price,
+            }
         ]
     }
 
-    getProducts() {
+    getProducts(): IProduct[] {
         return this.products
     }
 
-    getProduct(id: string): Product {
+    getProduct(id: string): IProduct {
         const product = this.products.find(product => product.id === id)
         if(!product) {
             throw new Error(`Product with id ${id} not found`)

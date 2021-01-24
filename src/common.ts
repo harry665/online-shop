@@ -1,6 +1,7 @@
 import { render } from "mustache";
+import { Page, PageHash, Views } from "./types";
 
-export function routing(pageHash: string): 'home' | 'basket' {
+export function routing(pageHash: PageHash): Page {
   const page = pageHash.split('#')[1]
   window.location.hash = page
 
@@ -28,14 +29,14 @@ export function renderTemplate(template: string, data: object = {}): string {
   return rendered
 }
 
-export async function getContentTemplate(page: 'home' | 'basket'): Promise<string> {
+export async function getContentTemplate(page: Page): Promise<string> {
   const home = await fetch('views/home.mustache').then(response => response.text());
   const basket = await fetch('views/basket.mustache').then(response => response.text());
 
-  const templates: { home: string, basket: string} = {
+  const views: Views = {
     home,
     basket
   }
 
-  return templates[page]
+  return views[page]
 }

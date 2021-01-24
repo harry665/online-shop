@@ -1,8 +1,9 @@
 import { getContentTemplate, renderTemplate, routing } from "./common";
-import { Basket } from "./models/basket";
+import { Basket } from "./models/basket/index";
 import { ProductList } from "./models/product-list";
+import { Page, PageHash } from "./types";
 
-export async function render(pageHash?: '#home' | '#basket') {
+export async function render(pageHash?: PageHash) {
     const page: any = pageHash || window.location.hash
     const route = routing(page)
 
@@ -50,7 +51,7 @@ export async function render(pageHash?: '#home' | '#basket') {
     handleEventListener(route)
 }
 
-function handleEventListener(page: 'home' | 'basket') {
+function handleEventListener(page: Page): void {
     // navigation event listeners
     const navigateToHomeButtonElement = window.document.getElementById('navigate-to-home-button')!
     navigateToHomeButtonElement.removeEventListener("click", () => render('#home'))
@@ -71,13 +72,13 @@ function handleEventListener(page: 'home' | 'basket') {
     }
 }
 
-function addProductToBasket(productId: string) {
+function addProductToBasket(productId: string): void {
     const products = ProductList.make()
     const basket = Basket.make()
 
-    const productHat = products.getProduct(productId)
+    const product = products.getProduct(productId)
 
-    basket.addProduct(productHat.id)
+    basket.addProduct(product.id)
 
     render()
 }
