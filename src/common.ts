@@ -3,21 +3,23 @@ import { Page, PageHash, Views } from "./types";
 
 export function routing(pageHash: PageHash): Page {
   const page = pageHash.split('#')[1]
-  window.location.hash = page
 
+  let newPage: Page = 'home' // fallback to home page
   switch (page) {
     case 'basket': {
-      return 'basket'
+      newPage = 'basket'
+      break
     }
 
     case 'home': {
-      return 'home'
-    }
-  
-    default: {
-      return 'home'
+      newPage = 'home'
+      break
     }
   }
+
+  window.location.hash = newPage
+
+  return newPage
 }
 
 export function renderTemplate(template: string, data: object = {}): string {
