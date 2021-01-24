@@ -26,12 +26,28 @@ export async function render(pageHash?: PageHash) {
     })        
   
     // content
-    const data = route === 'basket' ? {
-        items: Basket.make().getBasket().items,
-        totalPrice: Basket.make().getBasket().totalPrice
-    } : {
-        products: ProductList.make().getProducts()
+    let data = {}
+    if(route === 'home') {
+        data = {
+            products: ProductList.make().getProducts(),
+            formatPrice: function() {
+                return (val: number, render: any) => {                    
+                    return `${parseFloat(render(val)).toFixed(2).replace('.', ',')} €`
+                }
+            }
+        }
+    } else if(route === 'basket') {
+        data = {
+            items: Basket.make().getBasket().items,
+            totalPrice: Basket.make().getBasket().totalPrice,
+            formatPrice: function() {
+                return (val: number, render: any) => {                 
+                    return `${parseFloat(render(val)).toFixed(2).replace('.', ',')} €`
+                }
+            }
+        }
     }
+    
     const contentRender = renderTemplate(contentTemplate, data)
   
     // footer

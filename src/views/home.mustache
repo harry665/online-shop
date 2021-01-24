@@ -4,7 +4,7 @@
         <div class="product-card">
             <img src="img/{{ id }}.jpg">
             <div class="text-style">
-                {{ name }}: {{ price }} €
+                {{ name }}: {{#formatPrice}} {{price}} {{/formatPrice}}
             </div>
             <button id="add-product-{{ id }}" type="button" class="btn-add">
                 <i class="fas fa-shopping-cart fa-2x"></i>

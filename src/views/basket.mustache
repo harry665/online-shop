@@ -14,7 +14,7 @@
                 {{ name }}
             </div>
             <div class="basket-body-item-price">
-                {{ totalPrice }}  €
+                {{#formatPrice}} {{totalPrice}} {{/formatPrice}}
             </div>
             </div>
         {{ /items }}
@@ -38,7 +38,7 @@
                 Summe (x Artikel):
             </div>
             <div class="basket-body-element-total">
-                {{ totalPrice }} €
+                {{#formatPrice}} {{totalPrice}} {{/formatPrice}}
             </div>
             </div>
 
