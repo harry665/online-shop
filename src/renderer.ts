@@ -2,78 +2,19 @@ import { getViewHtmlString, renderTemplate, routing } from "./common";
 import { Basket } from "./models/basket";
 import { ProductList } from "./models/product-list";
 
-export function renderer() {
-    const mainTemplate = `
-        {{{ header }}}
-
-        <div class="content">
-            {{{ content }}}
-        </div>
-
-        {{{ footer }}}
-    `
+export async function renderer() {
+    const mainTemplate = await fetch('views/components/main.mustache').then(response => response.text());
+    
     const page: any = window.location.hash || '#home'
 
-    changePage(page)
+    await changePage(page)
 
-    function changePage(page: '#home' | '#basket') {
+    async function changePage(page: '#home' | '#basket') {
         const route = routing(page)
-        const viewHtmlString = getViewHtmlString(route)
+        const viewHtmlString = await getViewHtmlString(route)
 
-        const headerTemplate = `
-            <header> 
-            <div class="header">
-                <div class="header-element">
-    
-                <div class="text-style" id="app-title">
-                    <h2>{{ title }}</h2>
-                </div>
-    
-                <div class="text-style">
-                    <button 
-                    id="navigate-to-home-button"
-                    type="button" 
-                    class="btn-style"
-                    >
-                        <i class="fas fa-home fa-3x"></i>
-                    </button>
-
-                    <button 
-                    id="navigate-to-basket-button"
-                    type="button" 
-                    class="btn-style"
-                    >
-                        <i class="fas fa-shopping-basket fa-3x"></i>
-                    </button>
-                    {{ basket }}
-                </div>
-    
-                </div>
-            </div>
-            </header>
-        `
-
-        const footerTemplate = `
-            <footer>
-            <div class="footer">
-                <div class="footer-element">
-    
-                <div class="text-style">
-                    Week Sale!
-                </div>
-    
-                <div class="text-style">
-                    Einmaliger Rabatt in Höhe von 15%: SALE21
-                </div>
-    
-                <div class="text-style">
-                    Einmaliger Gutschein in Höhe von 5,00€: NEWYEAR21
-                </div>
-    
-                </div>
-            </div>
-            </footer>
-        `
+        const headerTemplate = await fetch('views/components/header.mustache').then(response => response.text());
+        const footerTemplate = await fetch('views/components/footer.mustache').then(response => response.text());
 
         const headerRender = renderTemplate(headerTemplate, {
             title: route,

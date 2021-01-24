@@ -1,0 +1,15 @@
+<div class="content-element">
+
+    {{ #products }}
+        <div class="product-card">
+            <img src="img/{{ id }}.jpg">
+            <div class="text-style">
+                {{ name }}: {{ price }} €
+            </div>
+            <button id="add-product-{{ id }}" type="button" class="btn-add">
+                <i class="fas fa-shopping-cart fa-2x"></i>
+            </button>
+        </div>
+    {{ /products }}
+
+</div>

@@ -1,0 +1,49 @@
+<div class="body">
+
+    <div class="basket-body-element">
+
+        {{ #items }}
+            <div class="basket-body-item">
+            <div class="basket-body-item-quantity">
+                {{ quantity }}
+            </div>
+            <div class="basket-body-item-img">
+                <img src="img/{{ id }}.jpg" height="60px">
+            </div>
+            <div class="basket-body-item-info">
+                {{ name }}
+            </div>
+            <div class="basket-body-item-price">
+                {{ totalPrice }}  €
+            </div>
+            </div>
+        {{ /items }}
+
+        <div class="basket-body-element-footer">
+
+            <div class="basket-body-element-coupon">
+            Gutschein hinzufügen (optional):
+            <input
+                class="input"
+                id="input_Item"
+                type="text"
+                maxlength="50"
+                autofocus="autofocus"
+                placeholder="Rabattcode hier eingeben"
+            />
+            </div>
+
+            <div class="basket-body-element-checkout">
+            <div class="basket-body-element-amount">
+                Summe (x Artikel):
+            </div>
+            <div class="basket-body-element-total">
+                {{ totalPrice }} €
+            </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

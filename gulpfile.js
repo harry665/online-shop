@@ -7,7 +7,12 @@ gulp.task('transpile', function () {
 })
 
 gulp.task('copy:data', function () {
-  return gulp.src(['./src/*.html', './src/*.css', './src/img/**'],  { 
+  return gulp.src([
+      './src/*.html', 
+      './src/*.css', 
+      './src/img/**', 
+      './src/views/**'
+  ],  { 
     base: './src/'
   }).pipe(gulp.dest('dist'))
 })
