@@ -1,6 +1,6 @@
 import { render } from "mustache";
 
-export function routing(pageHash: string): 'basket' | 'home' {
+export function routing(pageHash: string): 'home' | 'basket' {
   const page = pageHash.split('#')[1]
   window.location.hash = page
 
@@ -55,16 +55,16 @@ export function getViewHtmlString(page: 'home' | 'basket'): string {
         {{ #items }}
           <div class="basket-body-item">
             <div class="basket-body-item-quantity">
-              <select name="amount" id="selectAmount"></select>
+              {{ quantity }}
             </div>
             <div class="basket-body-item-img">
-              <img src="img/{{ product.id }}.jpg" height="60px">
+              <img src="img/{{ id }}.jpg" height="60px">
             </div>
             <div class="basket-body-item-info">
-              {{ product.name }}
+              {{ name }}
             </div>
             <div class="basket-body-item-price">
-              {{ product.price }}
+              {{ totalPrice }}  €
             </div>
           </div>
         {{ /items }}
@@ -88,7 +88,7 @@ export function getViewHtmlString(page: 'home' | 'basket'): string {
               Summe (x Artikel):
             </div>
             <div class="basket-body-element-total">
-              115,00€
+              {{ totalPrice }} €
             </div>
           </div>
 

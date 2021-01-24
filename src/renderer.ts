@@ -78,10 +78,11 @@ export function renderer() {
         const headerRender = renderTemplate(headerTemplate, {
             title: route,
             basket: Basket.make().getBasketCount()
-        })
+        })        
 
         const data = route === 'basket' ? {
-            items: Basket.make().getProducts()
+            items: Basket.make().getBasket().items,
+            totalPrice: Basket.make().getBasket().totalPrice
         } : {
             products: ProductList.make().getProducts()
         }

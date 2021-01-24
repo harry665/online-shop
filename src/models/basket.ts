@@ -1,20 +1,26 @@
-import { Product } from "./prodcut"
 import { ProductList } from "./product-list"
 
-type BasketItem = {
+type BasketRaw = {
     productId: string,
     quantity: number
 }
 
-type BasketProduct = {
-    product: Product,
-    quantity: number
+type BasketItem = {
+    id: string,
+    name: string,
+    quantity: number,
+    totalPrice: number
+}
+
+type BasketData = {
+    items: BasketItem[],
+    totalPrice: number
 }
 
 export class Basket {
     static INSTANCE: Basket | undefined
 
-    private basketItems: BasketItem[]
+    private basketItems: BasketRaw[]
 
     static make() {
         if(this.INSTANCE) {
@@ -50,7 +56,7 @@ export class Basket {
         this.basketItems.splice(index, 1)
     }
 
-    getItems(): BasketItem[] {
+    getItems(): BasketRaw[] {
         return this.basketItems
     }
 
@@ -64,19 +70,35 @@ export class Basket {
         return itemsInBasket
     }
 
-    getProducts(): BasketProduct[] {
-        const basketProducts: BasketProduct[] = []
+    getBasket(): BasketData {
+        const basketItems: BasketItem[] = []
+        
         const items = this.getItems()
-      
         for (const item of items) {
           const product = ProductList.make().getProduct(item.productId)
+
           
-          basketProducts.push({
-              product,
-              quantity: item.quantity
+          basketItems.push({
+            id: product.id,
+            name: product.name,
+            quantity: item.quantity,
+            totalPrice: product.price * item.quantity
           })
         }
       
-        return basketProducts
+        return {
+            items: basketItems,
+            totalPrice: getTotalPrice(basketItems)
+        }
     }
+}
+
+function getTotalPrice(basketItems: BasketItem[]): number {
+    let totalPrice: number = 0
+
+    basketItems.forEach((basketItem) => {
+        totalPrice += basketItem.totalPrice
+    })
+
+    return totalPrice
 }
