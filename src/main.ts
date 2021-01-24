@@ -1,13 +1,36 @@
 import { getViewHtmlString, renderTemplate, routing } from "./common";
 
-const route = routing()
-const page = getViewHtmlString(route)
+const mainTemplateDomElement = document.getElementById('app-main')!.innerHTML
+
+const page = window.location.hash || '#home'
 
 changePage(page)
 
 function changePage(page: string) {
-  renderTemplate(page)
+  const route = routing(page)
+  const viewHtmlString = getViewHtmlString(route)
+
+  // reset template
+  document.getElementById('app-main')!.innerHTML = mainTemplateDomElement
+  
+
+  renderTemplate(viewHtmlString)
 }
+
+// window.onhashchange = function () {
+//   console.log('CALL' + ':' + window.location.hash);
+  
+//   const page = window.location.hash || 'home'
+//   changePage(page)
+// }
+
+window.document.getElementById('navigate-to-basket-button')!.addEventListener("click", () => {
+  changePage('#basket')
+});
+
+window.document.getElementById('navigate-to-home-button')!.addEventListener("click", () => {
+  changePage('#home')
+}); 
 
 // import { Basket } from "./models/basket"
 // import { Product } from "./models/prodcut"

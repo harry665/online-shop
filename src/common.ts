@@ -12,14 +12,22 @@ export function renderTemplate(content: string) {
               <div class="header-element">
     
                 <div class="text-style" id="app-title">
-                  <h2>{{ title }}</h2>
+                  <h2>{{> title }}</h2>
                 </div>
     
                 <div class="text-style">
                   <button 
+                    id="navigate-to-home-button"
                     type="button" 
-                    class="btn-style" 
-                    onclick="changePage"
+                    class="btn-style"
+                  >
+                      <i class="fas fa-home fa-3x"></i>
+                  </button>
+                  
+                  <button 
+                    id="navigate-to-basket-button"
+                    type="button" 
+                    class="btn-style"
                   >
                       <i class="fas fa-shopping-basket fa-3x"></i>
                   </button>
@@ -60,9 +68,9 @@ export function renderTemplate(content: string) {
 
 }
 
-export function routing(): 'basket' | 'home' {
-  const urlParams = new URLSearchParams(window.location.search);
-  const page = urlParams.get('page')
+export function routing(pageHash: string): 'basket' | 'home' {
+  const page = pageHash.split('#')[1]
+  window.location.hash = page
 
   switch (page) {
     case 'basket': {
@@ -79,7 +87,7 @@ export function routing(): 'basket' | 'home' {
   }
 }
 
-export function getViewHtmlString(page: string) {
+export function getViewHtmlString(page: 'home' | 'basket'): string {
   const home = `
     <div class="content-element">
               
@@ -205,17 +213,10 @@ export function getViewHtmlString(page: string) {
     </div>
   `
 
-  switch (page) {
-    case 'basket': {
-      return basket
-    }
-
-    case 'home': {
-      return home
-    }
-  
-    default: {
-      return home
-    }
+  const templates: { home: string, basket: string} = {
+    home,
+    basket
   }
+
+  return templates[page]
 }
