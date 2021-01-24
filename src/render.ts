@@ -65,13 +65,13 @@ function handleEventListener(page: 'home' | 'basket') {
         const products = ProductList.make().getProducts()
         for (const product of products) {
             const product1337Element = window.document.getElementById(`add-product-${product.id}`)!
-            product1337Element.removeEventListener("click", () => addProductToBasked(product.id))
-            product1337Element.addEventListener("click", () => addProductToBasked(product.id)); 
+            product1337Element.removeEventListener("click", () => addProductToBasket(product.id))
+            product1337Element.addEventListener("click", () => addProductToBasket(product.id)); 
         }
     }
 }
 
-function addProductToBasked(productId: string) {
+function addProductToBasket(productId: string) {
     const products = ProductList.make()
     const basket = Basket.make()
 
