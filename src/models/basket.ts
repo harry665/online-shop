@@ -1,6 +1,13 @@
+import { Product } from "./prodcut"
+import { ProductList } from "./product-list"
 
 type BasketItem = {
     productId: string,
+    quantity: number
+}
+
+type BasketProduct = {
+    product: Product,
     quantity: number
 }
 
@@ -43,7 +50,7 @@ export class Basket {
         this.basketItems.splice(index, 1)
     }
 
-    getProducts(): BasketItem[] {
+    getItems(): BasketItem[] {
         return this.basketItems
     }
 
@@ -55,5 +62,21 @@ export class Basket {
         })
 
         return itemsInBasket
+    }
+
+    getProducts(): BasketProduct[] {
+        const basketProducts: BasketProduct[] = []
+        const items = this.getItems()
+      
+        for (const item of items) {
+          const product = ProductList.make().getProduct(item.productId)
+          
+          basketProducts.push({
+              product,
+              quantity: item.quantity
+          })
+        }
+      
+        return basketProducts
     }
 }

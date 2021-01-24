@@ -12,18 +12,14 @@ export function renderer() {
 
         {{{ footer }}}
     `
-    const page = window.location.hash || '#home'
+    const page: any = window.location.hash || '#home'
 
     changePage(page)
 
-    function changePage(page: string) {
+    function changePage(page: '#home' | '#basket') {
         const route = routing(page)
         const viewHtmlString = getViewHtmlString(route)
 
-        // reset template
-        // document.getElementById('app-main')!.innerHTML = mainTemplate
-
-        // render
         const headerTemplate = `
             <header> 
             <div class="header">
@@ -83,7 +79,14 @@ export function renderer() {
             title: route,
             basket: Basket.make().getBasketCount()
         })
-        const contentRender = renderTemplate(viewHtmlString)
+
+        const data = route === 'basket' ? {
+            items: Basket.make().getProducts()
+        } : {
+            products: ProductList.make().getProducts()
+        }
+        const contentRender = renderTemplate(viewHtmlString, data)
+
         const footerRender = renderTemplate(footerTemplate)
 
         // main template
