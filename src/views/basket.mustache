@@ -22,24 +22,26 @@
         <div class="basket-body-element-footer">
 
             <div class="basket-body-element-coupon">
-            Gutschein hinzufügen (optional):
+                Gutschein hinzufügen (optional):
             <input
+                id="discount-input"
                 class="input"
-                id="input_Item"
                 type="text"
                 maxlength="50"
                 autofocus="autofocus"
                 placeholder="Rabattcode hier eingeben"
             />
+            <button id="discount-button">Ok</button>
+            <div>{{ usedDiscountCode }}</div>
             </div>
 
             <div class="basket-body-element-checkout">
-            <div class="basket-body-element-amount">
-                Summe (x Artikel):
-            </div>
-            <div class="basket-body-element-total">
-                {{#formatPrice}} {{totalPrice}} {{/formatPrice}}
-            </div>
+                <div class="basket-body-element-amount">
+                    Summe ({{ basketCount }} Artikel):
+                </div>
+                <div class="basket-body-element-total">
+                    {{#formatPrice}} {{totalPrice}} {{/formatPrice}}
+                </div>
             </div>
 
         </div>

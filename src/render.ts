@@ -23,7 +23,7 @@ export async function render(pageHash?: PageHash) {
     const headerRender = renderTemplate(headerTemplate, {
         title: route,
         basket: Basket.make().getBasketCount()
-    })        
+    })
   
     // content
     let data = {}
@@ -40,6 +40,8 @@ export async function render(pageHash?: PageHash) {
         data = {
             items: Basket.make().getBasket().items,
             totalPrice: Basket.make().getBasket().totalPrice,
+            basketCount: Basket.make().getBasketCount(),
+            usedDiscountCode: Basket.make().discountCode ? `Used discount code: ${Basket.make().discountCode}` : undefined,
             formatPrice: function() {
                 return (val: number, render: any) => {                 
                     return `${parseFloat(render(val)).toFixed(2).replace('.', ',')} €`
@@ -69,11 +71,11 @@ export async function render(pageHash?: PageHash) {
 
 function handleEventListener(page: Page): void {
     // navigation event listeners
-    const navigateToHomeButtonElement = window.document.getElementById('navigate-to-home-button')!
+    const navigateToHomeButtonElement = window.document.getElementById('navigate-to-home-button')! as HTMLButtonElement
     navigateToHomeButtonElement.removeEventListener("click", () => render('#home'))
     navigateToHomeButtonElement.addEventListener("click", () => render('#home')); 
     
-    const navigateToBasketButtonElement = window.document.getElementById('navigate-to-basket-button')!
+    const navigateToBasketButtonElement = window.document.getElementById('navigate-to-basket-button')! as HTMLButtonElement
     navigateToBasketButtonElement.removeEventListener("click", () => render('#basket'))
     navigateToBasketButtonElement.addEventListener("click", () => render('#basket'));
 
@@ -81,10 +83,16 @@ function handleEventListener(page: Page): void {
         // home add products event listeners
         const products = ProductList.make().getProducts()
         for (const product of products) {
-            const product1337Element = window.document.getElementById(`add-product-${product.id}`)!
+            const product1337Element = window.document.getElementById(`add-product-${product.id}`)! as HTMLButtonElement
             product1337Element.removeEventListener("click", () => addProductToBasket(product.id))
             product1337Element.addEventListener("click", () => addProductToBasket(product.id)); 
         }
+    }
+
+    if(page === 'basket') {
+        const discountButtonElement = window.document.getElementById('discount-button')! as HTMLButtonElement
+        discountButtonElement.removeEventListener("click", () => addDiscountCode())
+        discountButtonElement.addEventListener("click", () => addDiscountCode())
     }
 }
 
@@ -95,6 +103,14 @@ function addProductToBasket(productId: string): void {
     const product = products.getProduct(productId)
 
     basket.addProduct(product.id)
+
+    render()
+}
+
+function addDiscountCode(): void {
+    const discountInputElement = window.document.getElementById('discount-input')! as HTMLInputElement
+            
+    Basket.make().addDiscountCode(discountInputElement.value)
 
     render()
 }

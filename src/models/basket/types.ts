@@ -12,5 +12,6 @@ export interface IBasketItem {
 
 export interface IBasket {
     items: IBasketItem[],
-    totalPrice: number
+    totalPrice: number,
+    discountCode?: string
 }
