@@ -17,11 +17,11 @@ export class ProductList {
         return this.INSTANCE
     }
 
-    constructor() {
-        const product1 = new Product('1337', "Hat - Magic Black", 20.00)
-        const product2 = new Product('1338', "Shirt - Diamond Black", 10.00)
-        const product3 = new Product('1339', "Pants - Carbon Black", 30.00)
-        const product4 =  new Product('1340', "Shoes - Piano Black", 30.00)
+    private constructor() {
+        const product1 = new Product('1337', "Hat - Magic Black", 10.00)
+        const product2 = new Product('1338', "Shirt - Diamond Black", 15.00)
+        const product3 = new Product('1339', "Pants - Carbon Black", 25.00)
+        const product4 =  new Product('1340', "Shoes - Piano Black", 50.00)
 
 
         this.products = [
