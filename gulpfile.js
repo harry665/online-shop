@@ -25,7 +25,7 @@ gulp.task('run', function () {
     }
   })
 
-  gulp.watch(['./src/*.html', './src/*.ts', './src/*.css']).on('change', () => {
+  gulp.watch(['./src/**/*.html', './src/**/*.ts', './src/**/*.css', './src/**/*.mustache']).on('change', () => {
     gulp.src(['.']).pipe(run('gulp build'))
   })
 
