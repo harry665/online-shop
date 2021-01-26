@@ -20,8 +20,9 @@ export async function render(pageHash?: PageHash) {
      */
     
     // header
+    const title = route === 'home' ? 'Shop' : 'Warenkorb'
     const headerRender = renderTemplate(headerTemplate, {
-        title: route,
+        title,
         basket: Basket.make().getBasketCount()
     })
   
@@ -98,7 +99,7 @@ function handleEventListener(page: Page): void {
         const products = ProductList.make().getProducts()
         for (const product of products) {
             // update quantity in basket
-            const updateQuantityInputElement = window.document.getElementById('quantity-input')! as HTMLInputElement
+            const updateQuantityInputElement = window.document.getElementById(`quantity-input-${product.id}`)! as HTMLInputElement
             if(updateQuantityInputElement) {
                 updateQuantityInputElement.removeEventListener("keypress", (event) => {
                     if (event.key === 'Enter') {
@@ -157,7 +158,7 @@ function addDiscountCode(): void {
 }
 
 function updateQuantity(productId: string): void {
-    const quantityInputElement = window.document.getElementById('quantity-input')! as HTMLInputElement
+    const quantityInputElement = window.document.getElementById(`quantity-input-${productId}`)! as HTMLInputElement
 
     const quantityInputValueAsNumber = Number.parseInt(quantityInputElement.value)
     if(quantityInputValueAsNumber === NaN) {
