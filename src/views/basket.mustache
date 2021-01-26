@@ -5,7 +5,7 @@
         {{ #items }}
             <div class="basket-body-item">
             <div class="basket-body-item-quantity">
-                {{ quantity }}
+                {{ quantity }}x
             </div>
             <div class="basket-body-item-img">
                 <img src="img/{{ id }}.jpg" height="60px">
@@ -23,16 +23,7 @@
 
             <div class="basket-body-element-coupon">
                 Gutschein hinzufügen (optional):
-            <input
-                id="discount-input"
-                class="input"
-                type="text"
-                maxlength="50"
-                autofocus="autofocus"
-                placeholder="Rabattcode hier eingeben"
-            />
-            <button id="discount-button">Ok</button>
-            <div>{{ usedDiscountCode }}</div>
+                <div class="discount-text">&ensp;{{ usedDiscountCode }}</div>
             </div>
 
             <div class="basket-body-element-checkout">
@@ -44,6 +35,18 @@
                 </div>
             </div>
 
+        </div>
+
+        <div class="basket-body-element-coupon-input">
+                <input
+                id="discount-input"
+                class="discount-input"
+                type="text"
+                maxlength="50"
+                autofocus="autofocus"
+                placeholder="Rabattcode hier eingeben"
+            />
+            <button id="discount-button" class="discount-button">Ok</button>
         </div>
 
     </div>

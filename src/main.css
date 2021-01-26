@@ -84,7 +84,7 @@ body {
 /* BASKET CSS */
 
 .basket-body-element {
-  background-color: black;
+  /* background-color: black; */
   margin-top: 25px;
   height: 400px;
   width: 75vw;
@@ -94,7 +94,7 @@ body {
 }
 
 .basket-body-item {
-  background-color: white;
+  /* background-color: white; */
   height: 75px;
   width: 75vw;
   display: flex;
@@ -103,7 +103,7 @@ body {
 }
 
 .basket-body-item-quantity {
-  background-color: red;
+  /* background-color: red; */
   height: 50px;
   width: 5%;
   display: flex;
@@ -112,7 +112,7 @@ body {
 }
 
 .basket-body-item-img {
-  background-color: yellow;
+  /* background-color: yellow; */
   height: 50px;
   width: 5%;
   display: flex;
@@ -120,7 +120,7 @@ body {
 }
 
 .basket-body-item-info {
-  background-color: pink;
+  /* background-color: pink; */
   height: 50px;
   width: 80%;
   display: flex;
@@ -128,7 +128,7 @@ body {
 }
 
 .basket-body-item-price {
-  background-color: green;
+  /* background-color: green; */
   height: 50px;
   width: 10%;
   display: flex;
@@ -139,15 +139,15 @@ body {
 }
 
 .basket-body-element-footer {
-  background-color: cornflowerblue;
-  height: 50px;
+  /* background-color: cornflowerblue; */
+  height: 40px;
   width: 75vw;
   display: flex;
   flex-direction: row;
 }
 
 .basket-body-element-coupon {
-  background-color: orange;
+  /* background-color: orange; */
   height: 50px;
   width: 80%;
   display: flex;
@@ -155,7 +155,7 @@ body {
 }
 
 .basket-body-element-checkout {
-  background-color: indianred;
+  /* background-color: indianred; */
   height: 50px;
   width: 20%;
   display: flex;
@@ -163,7 +163,7 @@ body {
 }
 
 .basket-body-element-amount {
-  background-color: white;
+  /* background-color: white; */
   height: 50px;
   width: 60%;
   display: flex;
@@ -172,7 +172,7 @@ body {
 }
 
 .basket-body-element-total {
-  background-color: red;
+  /* background-color: red; */
   height: 50px;
   width: 40%;
   display: flex;
@@ -182,7 +182,23 @@ body {
   font-weight: bold;
 }
 
-.input {
-  margin-left: 5px;
+.basket-body-element-coupon-input {
+  /* background-color: pink; */
+  margin-left: 0px;
+  height: 30px;
+  width: 75vw;
+}
+
+.discount-input {
+  height: 20px;
   width: 225px;
+}
+
+.discount-button {
+  height: 25px;
+}
+
+.discount-text {
+  color: rgb(0, 114, 0);
+  font-weight: bold;
 }

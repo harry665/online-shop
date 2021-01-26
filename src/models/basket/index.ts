@@ -4,7 +4,7 @@ import { IBasket, IBasketItem, IBasketRaw } from "./types";
 export class Basket {
     static INSTANCE: Basket | undefined
 
-    private _basketItems: IBasketRaw[]
+    private items: IBasketRaw[]
     private _discountCode?: string
 
     static make() {
@@ -18,7 +18,7 @@ export class Basket {
     }
 
     private constructor() {
-        this._basketItems = []
+        this.items = []
     }
 
     get discountCode(): string | undefined {
@@ -26,9 +26,9 @@ export class Basket {
     }
 
     addProduct(productId: string): void {            
-        const foundProduct = this._basketItems.find(basketItem => basketItem.productId === productId)
+        const foundProduct = this.items.find(item => item.productId === productId)
         if(!foundProduct) {
-            this._basketItems.push({
+            this.items.push({
                 productId: productId,
                 quantity: 1
             })
@@ -40,19 +40,19 @@ export class Basket {
     }
 
     removeProduct(productId: string): void {
-        const index = this._basketItems.findIndex(basketItem => basketItem.productId === productId)
+        const index = this.items.findIndex(item => item.productId === productId)
 
-        this._basketItems.splice(index, 1)
+        this.items.splice(index, 1)
     }
 
     getItems(): IBasketRaw[] {
-        return this._basketItems
+        return this.items
     }
 
     getBasketCount(): number {
         let itemsInBasket: number = 0
 
-        this._basketItems.forEach(product => {
+        this.items.forEach(product => {
             itemsInBasket += product.quantity
         })
 
@@ -60,14 +60,14 @@ export class Basket {
     }
 
     getBasket(): IBasket {
-        const basketItems: IBasketItem[] = []
+        const finalItems: IBasketItem[] = []
         
         const items = this.getItems()
         for (const item of items) {
           const product = ProductList.make().getProduct(item.productId)
 
           
-          basketItems.push({
+          finalItems.push({
             id: product.id,
             name: product.name,
             quantity: item.quantity,
@@ -76,8 +76,8 @@ export class Basket {
         }
       
         return {
-            items: basketItems,
-            totalPrice: calculateTotalPrice(getTotalPrice(basketItems), this._discountCode)
+            items: finalItems,
+            totalPrice: calculateTotalPrice(getTotalPrice(finalItems), this._discountCode)
         }
     }
 
@@ -90,11 +90,11 @@ export class Basket {
     }
 }
 
-function getTotalPrice(basketItems: IBasketItem[]): number {
+function getTotalPrice(items: IBasketItem[]): number {
     let totalPrice: number = 0
 
-    basketItems.forEach((basketItem) => {
-        totalPrice += basketItem.totalPrice
+    items.forEach((item) => {
+        totalPrice += item.totalPrice
     })
 
     return totalPrice

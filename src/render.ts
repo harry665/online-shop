@@ -41,7 +41,7 @@ export async function render(pageHash?: PageHash) {
             items: Basket.make().getBasket().items,
             totalPrice: Basket.make().getBasket().totalPrice,
             basketCount: Basket.make().getBasketCount(),
-            usedDiscountCode: Basket.make().discountCode ? `Used discount code: ${Basket.make().discountCode}` : undefined,
+            usedDiscountCode: Basket.make().discountCode ? `Gutschein "${Basket.make().discountCode}" eingelöst!` : undefined,
             formatPrice: function() {
                 return (val: number, render: any) => {                 
                     return `${parseFloat(render(val)).toFixed(2).replace('.', ',')} €`
