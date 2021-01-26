@@ -4,18 +4,37 @@
 
         {{ #items }}
             <div class="basket-body-item">
-            <div class="basket-body-item-quantity">
-                {{ quantity }}x
-            </div>
-            <div class="basket-body-item-img">
-                <img src="img/{{ id }}.jpg" height="60px">
-            </div>
-            <div class="basket-body-item-info">
-                {{ name }}
-            </div>
-            <div class="basket-body-item-price">
-                {{#formatPrice}} {{totalPrice}} {{/formatPrice}}
-            </div>
+                <div class="basket-body-item-quantity">
+                    <button id="quantity-decrease-button-{{ id }}" class="quantity-decrease-button">
+                        -
+                    </button>
+                    <input
+                        id="quantity-input"
+                        class="quantity-input"
+                        type="number"
+                        maxlength="2"
+                        autofocus="autofocus"
+                        value="{{ quantity }}"
+                    />
+
+                    <button id="quantity-increase-button-{{ id }}" class="quantity-increase-button">
+                        +
+                    </button>
+                </div>
+                <div class="basket-body-item-img">
+                    <img src="img/{{ id }}.jpg" height="60px">
+                </div>
+                <div class="basket-body-item-info">
+                    {{ name }}
+                </div>
+                <div class="basket-body-product-remove">
+                    <button id="remove-product-button-{{ id }}" class="remove-product-button">
+                        Remove
+                    </button>
+                </div>
+                <div class="basket-body-item-price">
+                    {{#formatPrice}} {{totalPrice}} {{/formatPrice}}
+                </div>
             </div>
         {{ /items }}
 
@@ -38,7 +57,7 @@
         </div>
 
         <div class="basket-body-element-coupon-input">
-                <input
+            <input
                 id="discount-input"
                 class="discount-input"
                 type="text"
@@ -46,6 +65,7 @@
                 autofocus="autofocus"
                 placeholder="Rabattcode hier eingeben"
             />
+
             <button id="discount-button" class="discount-button">Ok</button>
         </div>
 

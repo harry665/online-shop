@@ -88,6 +88,43 @@ export class Basket {
 
         this._discountCode = discountCode
     }
+
+    increaseQuantity(productId: string): void {          
+        const foundProduct = this.items.find(item => item.productId === productId)
+        if(!foundProduct) {
+            return
+        }
+
+        foundProduct.quantity++
+    }
+
+    decreaseQuantity(productId: string): void {          
+        const foundProduct = this.items.find(item => item.productId === productId)
+        if(!foundProduct) {
+            return
+        }
+
+        if(foundProduct.quantity > 1) {
+            foundProduct.quantity--
+            return 
+        }
+
+        this.removeProduct(productId)
+    }
+
+    updateQuantity(productId: string, quantity: number) {
+        const foundProduct = this.items.find(item => item.productId === productId)
+        if(!foundProduct) {
+            return
+        }
+
+        if(quantity === 0) {
+            this.removeProduct(productId)
+            return 
+        }
+
+        foundProduct.quantity = quantity
+    }
 }
 
 function getTotalPrice(items: IBasketItem[]): number {

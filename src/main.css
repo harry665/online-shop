@@ -10,6 +10,20 @@ body {
   color: black;
 }
 
+/* Remove input arrows */
+
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 /* SHOP CSS */
 
 /* header-css */
@@ -201,4 +215,9 @@ body {
 .discount-text {
   color: rgb(0, 114, 0);
   font-weight: bold;
+}
+
+.quantity-input {
+  height: 20px;
+  width: 15px;
 }
